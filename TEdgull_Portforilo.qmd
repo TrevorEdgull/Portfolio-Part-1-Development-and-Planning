@@ -15,10 +15,13 @@ Describe your data, including variables and data types.
 Identify the research questions you want to answer.
 > The potential research questions I would like to answer would be 
 1. Do us viewers in millions increase over progession in episodes of a season.
-2. 
+2. Do seasons of the Simpsons in the 1990s have a higher imdb rating on average comapred to Seasons from the 2000s
 
 Data Visualization
 What do you want your final visualizations to look like?
+
+> I want scatterplots to show if there is clear representation of viewer retention for episodes as a season of the simpsons progresses.
+
 What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?
 What is missing from your data or would need to change in your data to create these visualizations?
 
@@ -29,14 +32,19 @@ The answer to at least three of these questions should be “YES” for the data
 Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?
 Do you need to deal with any missing data, especially missing data coded other than NA?
 Do you need to filter your data? How?
+> Yes, filtering data by season and year
+
 Do you need to create any new variables? What variables? How?
 Do you need to add new data (join) to your data? What data? How?
 Do you need pivot your data in any way? Why? How?
 Do you need to summarize any of the variables? Which ones? How?
+> Yes, I need to summarize the imdb score
+
 What other aspects of your data need to be “fixed” in order to make your data visualizations?
 Most will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.
 
 Are there any variables you can exclude from your data?
+> Yes, the production code variable is not needed
 
 
 ```{r}
@@ -57,25 +65,29 @@ simpsons_episodes_clean <- clean_names(simpsons_episodes)
 simpsons_episodes_clean |>
   filter(season == 1) |>
   ggplot() +
-  geom_point(mapping = aes(x = number_in_season, y = us_viewers_in_millions), 
-           color = "blue") 
-           xlab = "Number of episode in season",
-           ylab = "U.S. Viewers in Millions")
+  geom_point(mapping = aes(x = number_in_season, y = us_viewers_in_millions),
+             color = "blue") +
+  xlab("Number of episode in season") +
+  ylab("U.S. Viewers in millions")
+           
 
 simpsons_episodes_clean |>
   filter(season == 2) |>
   ggplot() +
   geom_point(mapping = aes(x = number_in_season, y = us_viewers_in_millions), 
-           color = "green",
-           xlab = "Number of episode in season",
-           ylab = "U.S. Viewers in Millions")
+           color = "green") +
+           xlab("Number of episode in season") +
+           ylab("U.S. Viewers in Millions")
+
 
 simpsons_episodes_clean |>
   filter(season == 3) |>
   ggplot() +
   geom_point(mapping = aes(x = number_in_season, y = us_viewers_in_millions), 
-           color = "red",
-           xlab = "Number of episode in season",
-           ylab = "U.S. Viewers in Millions")
+           color = "red") +
+           xlab("Number of episode in season") +
+           ylab("U.S. Viewers in Millions")
+
+  
 ```
 
