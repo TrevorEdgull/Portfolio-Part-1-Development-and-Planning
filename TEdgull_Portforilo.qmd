@@ -90,4 +90,14 @@ simpsons_episodes_clean |>
 
   
 ```
+```{r}
+simpsons_1990 <- mutate(simpsons_episodes_clean) |>
+  filter(original_air_year < 2000)
+
+
+
+
+
+```
+
 
